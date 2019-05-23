@@ -50,4 +50,3 @@ production:
   <<: *default
   database: Catapptrofesql_production
   username: Catapptrofesql
-  password: <%= ENV['CATAPPTROFESQL_DATABASE_PASSWORD'] %>
