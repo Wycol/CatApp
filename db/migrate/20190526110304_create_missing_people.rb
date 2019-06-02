@@ -6,7 +6,6 @@ class CreateMissingPeople < ActiveRecord::Migration[5.2]
       t.string :lastname
       t.integer :age
       t.integer :gender
-
       t.timestamps
     end
   end
