@@ -1,5 +1,5 @@
 module Api::V1
-    class MissingPeopleController < ApiController
+    class ResourcesController < ApiController
 
         def index
             @resources = Resource.all
@@ -18,7 +18,7 @@ module Api::V1
         end
 
         def resources_params
-            params.permit(:name, :localization, :type)
+            params.permit(:name, :localization, :category)
         end
 
     end
