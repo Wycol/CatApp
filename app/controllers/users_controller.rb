@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :destroy, :update]
-    before_action :require_user, except: [:new, :create]
+    before_action :require_admin
     def index
         @users = User.all.where(admin: false).order(:name)
     end
@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     def create
         @user= User.new(user_params)
         if @user.save
-            session[:user_id] = @user.id
-            flash[:success] = "Bienvenido #{@user.name} a Cat App!"
+            flash[:success] = "Usuario creado!"
             redirect_to user_path(@user)
         else
             render 'new'
@@ -52,10 +51,5 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    def require_admin
-        if logged_in? && !current_user.admin?
-          flash[:danger] = "Solo los administradores pueden hacer eso."
-          redirect_to root_path
-        end
-      end
+    
 end
