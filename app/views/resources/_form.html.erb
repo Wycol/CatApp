@@ -1,0 +1,39 @@
+<%= render 'shared/errors', obj: @resource %>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@resource, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :name, "Nombre" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre del recurso", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :localization %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :localization, class: "form-control", placeholder: "Introduce localización" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :category %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :category, class: "form-control" %>
+        </div>
+      </div>
+      <!-- Para formulario de edit -->
+
+      <!-- Fin de edit de usuario -->
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <%= f.submit(@resource.new_record? ? "Crear un nuevo recurso" : "Actualizar el recurso", class: "btn btn-primary btn-lg btn-xlarge") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
