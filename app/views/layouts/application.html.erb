@@ -11,8 +11,7 @@
 
   <body>
    <% if logged_in? %>
-   <li><%= link_to "Log out", logout_path, method: :delete %></li>
-    <%#= render 'layouts/navigation' %>
+    <%= render 'layouts/navigation' %>
     <% end %>
     <%= render 'layouts/messages' %>
     <div class="container">
