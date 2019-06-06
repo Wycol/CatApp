@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Catapptrofesql</title>
+    <title>Myrecipes</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+   <% if logged_in? %>
+   <li><%= link_to "Log out", logout_path, method: :delete %></li>
+    <%#= render 'layouts/navigation' %>
+    <% end %>
+    <%= render 'layouts/messages' %>
+    <div class="container">
+      <%= yield %>
+      </div>
+      <%#= render 'layouts/footer' %>
   </body>
 </html>
