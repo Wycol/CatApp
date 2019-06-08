@@ -34,16 +34,16 @@
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
       </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :tipo, "Tipo de usuario: " %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :tipo, User.tipos.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
       <!-- Para formulario de edit -->
-      <% if !@user.new_record? %>
+      <% if !@user.new_record? && current_user.admin %>
+        <div class="form-group">
+          <div class="control-label col-md-2">
+            <%= f.label :tipo, "Tipo de usuario: " %>
+          </div>
+          <div class="col-md-8">
+            <%= f.select :tipo, User.tipos.keys.to_a, class: "form-control" %>
+          </div>
+        </div>
         <div class="form-group">
           <div class="control-label col-md-2">
             <%= f.label :resource_ids, "Asignar un recurso: " %>

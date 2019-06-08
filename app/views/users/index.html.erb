@@ -7,8 +7,12 @@
           <li><%= link_to user.name.capitalize,
                                          user_path(user) %>
              <% if logged_in? && current_user.admin? && !user.admin? %>
-             <li><%= link_to "Editar este usuario",edit_user_path(user)%>
-            </li>
+             <li><%= link_to "Editar este usuario",edit_user_path(user)%></li>
+             <% if !user.active %>
+              <li><%= link_to "Activar este usuario", activate_user_path(user) ,method: :post %></li>
+              <% else %>
+              <li><%= link_to "Desactivar este usuario", deactivate_user_path(user) ,method: :post %></li>
+              <% end %>
           <li><%= link_to "Borrar este usuario",user_path(user), method: :delete,
             data: {confirm: "¿De verdad?"}%>
             </li>

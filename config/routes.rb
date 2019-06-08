@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  resources :users, except: [:new]
+  resources :users, except: [:new] do
+    member do
+      post 'activate'
+      post 'deactivate'
+    end
+  end
   resources :resources
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
