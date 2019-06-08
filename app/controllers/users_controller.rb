@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :destroy, :update]
-    before_action :require_admin
+    before_action :require_user, except: [:new, :create]
     def index
         @users = User.all.where(admin: false).order(:name)
     end
