@@ -11,7 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'jquery-rails'
-
+gem 'carrierwave'
 # Use SCSS for stylesheets
 gem 'awesome_print', require: 'ap'
 gem 'bootstrap-sass'

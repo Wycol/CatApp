@@ -10,7 +10,7 @@
           <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre", autofocus: true %>
         </div>
       </div>
-       <div class="form-group">
+      <div class="form-group">
         <div class="control-label col-md-2">
           <%= f.label :lastname, "Apellidos" %>
         </div>
@@ -18,7 +18,6 @@
           <%= f.text_field :lastname, class: "form-control",placeholder: "Introduce apellidos", autofocus: true %>
         </div>
       </div>
-
       <div class="form-group">
         <div class="control-label col-md-2">
           <%= f.label :age, "Edad" %>
@@ -32,7 +31,15 @@
           <%= f.label :gender, "Sexo" %>
         </div>
         <div class="col-md-8">
-            <%= f.select :gender, MissingPerson.genders.keys.to_a, class: "form-control" %>
+          <%= f.select :gender, MissingPerson.genders.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :image, "Imagen" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.file_field :image %>
         </div>
       </div>
       <!-- Para formulario de edit -->

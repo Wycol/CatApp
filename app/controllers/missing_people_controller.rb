@@ -45,6 +45,6 @@ class MissingPeopleController < ApplicationController
     end
 
     def missing_person_params
-        params.require(:missing_person).permit(:image, :name, :lastname, :age, :gender)
+        params.require(:missing_person).permit(:name, :lastname, :age, :gender, :image)
     end
 end
