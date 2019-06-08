@@ -1,3 +1,3 @@
 class MissingPerson < ApplicationRecord
-    enum gender: [:masculino, :femenino]
+    enum gender: [:Masculino, :Femenino]
 end
