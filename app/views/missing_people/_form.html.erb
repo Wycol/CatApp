@@ -39,6 +39,7 @@
           <%= f.label :image, "Imagen" %>
         </div>
         <div class="col-md-8">
+        <%= image_tag(@miss.image_url) if @miss.image? %>
           <%= f.file_field :image %>
         </div>
       </div>
