@@ -45,7 +45,8 @@ class ResourcesController < ApplicationController
 
     private
     def resource_params
-        params.require(:resource).permit(:name, :localization, :category)
+        params.require(:resource).permit(:name, :localization, :category,
+                form_fields_attributes: [:id, :label, :value, :_destroy])
     end
 
     def set_resource
