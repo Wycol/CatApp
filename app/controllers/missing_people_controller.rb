@@ -12,7 +12,7 @@ class MissingPeopleController < ApplicationController
         @miss= MissingPerson.new(missing_person_params)
         if @miss.save
             flash[:success] = "Persona perdida añadida!"
-            redirect_to missing_person_path(@miss)
+            redirect_to missing_people_path
         else
             render 'new'
         end

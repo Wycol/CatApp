@@ -14,7 +14,7 @@ class ResourcesController < ApplicationController
         @resource= Resource.new(resource_params)
         if @resource.save
             flash[:success] = "Creado recurso nuevo!"
-            redirect_to resource_path(@resource)
+            redirect_to resources_path
         else
             render 'new'
         end
@@ -29,7 +29,7 @@ class ResourcesController < ApplicationController
     def update
         if @resource.update(resource_params)
             flash[:success] = "Se actualizaron los datos de recurso."
-                redirect_to resource_path(@resource)
+            redirect_to resources_path(@resource)
         else
             render 'edit'
     end
