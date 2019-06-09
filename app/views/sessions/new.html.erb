@@ -1,10 +1,10 @@
 <div id="login" class="container-fluid">
     <div class="row justify-content-center">
-    <%= render 'layouts/messages' %>
         <div class="col-3">
             <div class="card mt-5">
                 <div class="card-body">
-                    <h1 class="text-center my-4">Inicia sesión</h1>
+                    <h3 class="text-center my-4">Inicia sesión</h3>
+                    <%= render 'layouts/messages' %>
                     <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
 
                         <div class="form-group row">
