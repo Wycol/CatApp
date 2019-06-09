@@ -1,0 +1,55 @@
+<%= render 'shared/errors', obj: @miss %>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@miss, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :name, "Nombre" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :lastname, "Apellidos" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :lastname, class: "form-control",placeholder: "Introduce apellidos", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :age, "Edad" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.number_field :age, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :gender, "Sexo" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :gender, MissingPerson.genders.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :image, "Imagen" %>
+        </div>
+        <div class="col-md-8">
+        <%= image_tag(@miss.image_url) if @miss.image? %>
+          <%= f.file_field :image %>
+        </div>
+      </div>
+      <!-- Para formulario de edit -->
+      <!-- Fin de edit de usuario -->
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <%= f.submit(@miss.new_record? ? "Añadir una nueva persona" : "Actualizar nueva persona", class: "btn btn-primary btn-lg btn-xlarge") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

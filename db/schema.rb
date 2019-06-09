@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_112126) do
+ActiveRecord::Schema.define(version: 2019_06_09_125841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chefs", force: :cascade do |t|
+    t.string "chefname"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.boolean "admin", default: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "description"
+    t.integer "chef_id"
+    t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "form_fields", force: :cascade do |t|
+    t.bigint "resource_id"
+    t.string "value"
+    t.string "label"
+    t.string "input_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource_id"], name: "index_form_fields_on_resource_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "missing_people", force: :cascade do |t|
     t.string "image"
@@ -48,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_112126) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.integer "tipo"
+    t.boolean "active", default: false
   end
 
 end

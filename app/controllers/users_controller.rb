@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :destroy, :update]
+    before_action :set_user, only: [:show, :edit, :destroy, :update, :activate, :deactivate]
     before_action :require_user, except: [:new, :create]
     def index
         @users = User.all.where(admin: false).order(:name)
@@ -42,6 +42,24 @@ class UsersController < ApplicationController
         redirect_to users_path
         end
     end
+
+    def activate
+        if @user.user_activation
+        flash[:success] = "Usuario activado."
+        redirect_to users_path
+        else
+            render 'index'
+        end
+    end
+    def deactivate
+       if  @user.user_deactivation
+        flash[:success] = "Usuario activado."
+        redirect_to users_path
+        else
+        render 'index'
+       end
+    end
+
     private
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :tipo, resource_ids:[])

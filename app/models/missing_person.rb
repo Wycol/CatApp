@@ -1,3 +1,4 @@
 class MissingPerson < ApplicationRecord
-    enum gender: [:masculino, :femenino]
+    enum gender: [:Masculino, :Femenino]
+    mount_uploader :image, ImageUploader
 end
