@@ -10,8 +10,11 @@ gem 'rails', '~> 5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+gem 'jquery-rails'
+gem 'carrierwave'
 # Use SCSS for stylesheets
 gem 'awesome_print', require: 'ap'
+gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -27,13 +30,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors', :require => 'rack/cors'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'htmlbeautifier'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

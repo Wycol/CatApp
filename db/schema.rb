@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_181855) do
+ActiveRecord::Schema.define(version: 2019_06_09_125841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "form_fields", force: :cascade do |t|
+    t.bigint "resource_id"
+    t.string "value"
+    t.string "label"
+    t.string "input_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource_id"], name: "index_form_fields_on_resource_id"
+  end
 
   create_table "missing_people", force: :cascade do |t|
     t.string "image"
@@ -47,7 +57,8 @@ ActiveRecord::Schema.define(version: 2019_06_02_181855) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.string "authentication_token"
+    t.integer "tipo"
+    t.boolean "active", default: false
   end
 
 end
