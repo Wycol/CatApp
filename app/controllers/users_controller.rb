@@ -15,6 +15,7 @@ class UsersController < ApplicationController
             flash[:success] = "Usuario creado!"
             redirect_to user_path(@user)
         else
+            flash[:danger] = "Completa todos los campos"
             render 'new'
         end
     end
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :tipo, resource_ids:[])
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :tipo, :active, :age, :perfil, :phone, :dni, resource_ids:[])
     end
 
     def set_user

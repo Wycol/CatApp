@@ -1,77 +1,83 @@
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <div class="card mt-5">
-            <%= render 'layouts/messages' %>
-                <div class="card-body">
-                    <h1 class="text-center my-4">Nuevo Usuario</h1>
-                    <%= form_for(@user, :html => {class: "", role: "form"}) do |f| %>
-
-                        <div class="form-group row">
-                            <div class="col-8 mx-auto">
-
-                              <%= f.text_field :name, class: "form-control",placeholder: "Nombre", autofocus: true, required: true%>
-                            
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-8 mx-auto">
-
-                                <%= f.email_field :email, class: "form-control", placeholder: "Correo electrónico", required: true %>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-8 mx-auto">
-
-                                <%= f.password_field :password, class: "form-control", placeholder: "Contraseña", required: true %>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-8 mx-auto">
-
-                                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmar contraseña", required: true %>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-8 mx-auto">
-
-                                <%= f.select :tipo, User.tipos.keys.to_a, class: "form-control" %>
-
-                            </div>
-                        </div>
-
-                        <!-- Para formulario de edit -->
-                        <% if !@user.new_record? %>
-                          <div class="form-group">
-                            <div class="control-label col-md-2">
-                              <%= f.label :resource_ids, "Asignar un recurso: " %>
-                            </div>
-                            <div class="row">
-                              <%= f.collection_check_boxes :resource_ids,Resource.all, :id, :name do |cb| %>
-                                <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box + cb.text} %>
-                              <% end %>
-                            </div>
-                          </div>
-                        <% end %>
-                        <!-- Fin de edit de usuario -->
-
-                        <div class="form-group row mb-0">
-                            <div class="col-6 mx-auto text-center">
-                            <%= f.submit(@user.new_record? ? "Registro" : "Aceptar", class: "btn btn-primary btn-lg btn-xlarge") %>
-                            </div>
-                        </div>
-                        
-                        <% end %>    
-                    </form>
-                </div>
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="card mt-5">
+        <%= render 'layouts/messages' %>
+        <div class="card-body">
+          <h1 class="text-center my-4">Nuevo Usuario</h1>
+          <%= form_for(@user, :html => {class: "", role: "form"}) do |f| %>
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.text_field :name, class: "form-control",placeholder: "Nombre", autofocus: true, required: true%>
+              </div>
             </div>
-        </div>
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.email_field :email, class: "form-control", placeholder: "Correo electrónico", required: true %>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.phone_field :phone, class: "form-control", placeholder: "Telefono"%>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.number_field :age, class: "form-control", placeholder: "Edad"%>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.text_field :dni, class: "form-control", placeholder: "DNI", :maxlength => 9 %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.password_field :password, class: "form-control", placeholder: "Contraseña"%>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-8 mx-auto">
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmar contraseña"%>
+              </div>
+            </div>
+            <!-- Para formulario de edit -->
+            <% if !@user.new_record? %>
+              <div class="form-group row">
+                <div class="col-8 mx-auto">
+                  <%= f.select :tipo, User.tipos.keys.to_a, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-8 mx-auto">
+                  <%= f.select :perfil, User.perfils.keys.to_a, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-8 mx-auto">
+                  <%= f.collection_check_boxes :resource_ids,Resource.all, :id, :name do |cb| %>
+                    <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box + cb.text} %>
+                  <% end %>
+                </div>
+              </div>
+               <div class="form-group">
+                <div class="col-8 mx-auto">
+                Activo
+                <%= f.check_box :active %> <br />
+                </div>
+              </div>
+            <% end %>
+            <!-- Fin de edit de usuario -->
+            <div class="form-group row mb-0">
+              <div class="col-6 mx-auto text-center">
+                <%= f.submit(@user.new_record? ? "Registro" : "Aceptar", class: "btn btn-primary btn-lg btn-xlarge") %>
+              </div>
+            </div>
+          <% end %>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
 </div>

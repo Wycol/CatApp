@@ -53,10 +53,10 @@ class ResourcesController < ApplicationController
         @resource = Resource.find(params[:id])
     end
 
-    def require_admin
-        if logged_in? && !current_user.admin?
-          flash[:danger] = "Solo los administradores pueden hacer eso."
-          redirect_to root_path
-        end
-    end
+    # def require_admin
+    #     if logged_in? && !current_user.admin?
+    #       flash[:danger] = "Solo los administradores pueden hacer eso."
+    #       redirect_to root_path
+    #     end
+    # end
 end

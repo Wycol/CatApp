@@ -43,6 +43,46 @@
           <%= f.file_field :image %>
         </div>
       </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :eye, "Color de los ojos" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :eye, MissingPerson.eyes.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :race, "Raza" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :race, MissingPerson.races.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :hair, "Tipo de pelo" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :hair, MissingPerson.hairs.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :hair_color, "Color del pelo" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :hair_color, MissingPerson.hair_colors.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :complexion, "Complexion" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :complexion, MissingPerson.complexions.keys.to_a, class: "form-control" %>
+        </div>
+      </div>
       <!-- Para formulario de edit -->
       <!-- Fin de edit de usuario -->
       <div class="form-group">
