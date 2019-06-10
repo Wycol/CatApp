@@ -13,8 +13,9 @@ class FormFieldsController < ApplicationController
         end
     end
 
+
     private
     def form_field_params
-        params.require(:form_field).permit(:resource_id, :value, :label, :input_type)
+        params.require(:form_field).permit(:resource_id, :value, :label, :input_type, :size)
     end
 end

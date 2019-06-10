@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :password, presence: true, on: :create
     has_many :user_resources, dependent: :destroy
     has_many :resources, through: :user_resources
-
+    validates :email, uniqueness: true
 
     def user_activation
         self.active = true

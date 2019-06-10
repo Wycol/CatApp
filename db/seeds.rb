@@ -8,4 +8,4 @@
 5.times do
     User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "messi")
 end
-    User.create(name: "Admin", email: "user@example.com", password: "changeme", admin: true, active: true)
+    User.create(name: "Admin", email: "user@example.com", password: "changeme", admin: true, active: true, tipo: "Admin")

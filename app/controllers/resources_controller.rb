@@ -1,9 +1,10 @@
 class ResourcesController < ApplicationController
     before_action :set_resource, only: [:show, :edit, :destroy, :update]
-    before_action :require_admin, except: [:index, :show]
+    before_action :require_admin, except: [:index, :show, :edit, :update]
     before_action :require_user
     def index
         @resources = Resource.all
+        @resources_filter = current_user.resources
     end
 
     def new

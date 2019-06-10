@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_080828) do
+ActiveRecord::Schema.define(version: 2019_06_10_131444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 2019_06_10_080828) do
     t.bigint "resource_id"
     t.string "value"
     t.string "label"
-    t.string "input_type"
+    t.integer "input_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size"
     t.index ["resource_id"], name: "index_form_fields_on_resource_id"
   end
 
