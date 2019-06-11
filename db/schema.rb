@@ -15,23 +15,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_131444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chefs", force: :cascade do |t|
-    t.string "chefname"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.boolean "admin", default: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "description"
-    t.integer "chef_id"
-    t.integer "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "form_fields", force: :cascade do |t|
     t.bigint "resource_id"
     t.string "value"
@@ -41,12 +24,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_131444) do
     t.datetime "updated_at", null: false
     t.integer "size"
     t.index ["resource_id"], name: "index_form_fields_on_resource_id"
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "missing_people", force: :cascade do |t|
@@ -65,19 +42,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_131444) do
     t.integer "hair"
     t.integer "hair_color"
     t.integer "complexion"
-  end
-
-  create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "chef_id"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -102,7 +66,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_131444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.string "authentication_token"
     t.integer "tipo", default: 0
     t.boolean "active", default: false
     t.integer "age"
