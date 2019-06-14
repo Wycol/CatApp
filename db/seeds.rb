@@ -10,4 +10,8 @@ User.create(name: "Admin", email: "user@example.com", password: "changeme", admi
 5.times do
     User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "messi")
 end
+<<<<<<< HEAD
     User.create(name: "Admin", email: "user@example.com", password: "changeme", admin: true, active: true, tipo: "Admin")
+=======
+    
+>>>>>>> 65c9651cbf3f91dc95f42392ba472c24f8221af1
