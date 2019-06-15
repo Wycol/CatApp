@@ -97,7 +97,8 @@
           <!-- Fin de edit de usuario -->
           <div class="form-group row mb-0">
             <div class="col-6 mx-auto text-center">
-              <%= f.submit(@user.new_record? ? "Registro" : "Aceptar", class: "btn btn-primary btn-lg btn-xlarge") %>
+              <%= f.submit(@user.new_record? ? "Registro" : "Aceptar", class: "btn btn-small btn-primary") %>
+              <%= link_to 'Cancelar'.html_safe, :back, class: "btn btn-small btn-danger" %>
             </div>
           </div>
         <% end %>
