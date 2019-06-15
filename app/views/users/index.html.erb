@@ -45,15 +45,15 @@
             <td scope="row">
               <% if user.active? %>
                 <% if current_user.name == user.name %>
-                  <button class="btn btn-small btn-warning ml-3 disabled"><i class="material-icons align-middle">power_settings_new</i></button>              
+                  <button class="btn btn-small btn-success ml-3 disabled"><i class="material-icons align-middle">power_settings_new</i></button>              
                 <% else %>
-                  <%= link_to '<i class="material-icons align-middle">power_settings_new</i>'.html_safe, deactivate_user_path(user) ,method: :post , class: "btn btn-small btn-warning ml-3"%>
+                  <%= link_to '<i class="material-icons align-middle">power_settings_new</i>'.html_safe, deactivate_user_path(user) ,method: :post , class: "btn btn-small btn-success ml-3"%>
                 <% end %>
               <% else %>
                 <% if current_user.name == user.name %>
-                  <button class="btn btn-small btn-success ml-3 disabled"><i class="material-icons align-middle">power_settings_new</i></button>
+                  <button class="btn btn-small btn-outline-success ml-3 disabled"><i class="material-icons align-middle">power_settings_new</i></button>
                 <% else %>
-                  <%= link_to '<i class="material-icons align-middle">power_settings_new</i>'.html_safe,  activate_user_path(user) ,method: :post , class: "btn btn-small btn-success ml-3"%>
+                  <%= link_to '<i class="material-icons align-middle">power_settings_new</i>'.html_safe,  activate_user_path(user) ,method: :post , class: "btn btn-small btn-outline-success ml-3"%>
                 <% end %>
               <% end %>
             </td>
@@ -62,7 +62,7 @@
             </td>
             <td scope="row">
               <% if current_user.name == user.name %>
-                <button class="btn btn-small btn-danger ml-3 disabled"><i class="material-icons align-middle">delete</i></button>
+                <button class="btn btn-small btn-dark ml-3 disabled"><i class="material-icons align-middle">delete</i></button>
               <% else %>
                 <%= link_to '<i class="material-icons align-middle">delete</i>'.html_safe ,user_path(user), method: :delete, data: {confirm: "¿Desea eliminar el usuario "+user.name+"?"}, class: "btn btn-small btn-danger ml-3"%>
               <% end %>
