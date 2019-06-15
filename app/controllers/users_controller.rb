@@ -2,11 +2,7 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :destroy, :update, :activate, :deactivate]
     before_action :require_admin, except: [:new, :create]
     def index
-<<<<<<< HEAD
-        @users = User.all.order(:id)
-=======
         @users = User.all.order(:name)
->>>>>>> origin
     end
 
     def new
