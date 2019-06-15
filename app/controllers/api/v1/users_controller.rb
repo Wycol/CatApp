@@ -1,7 +1,7 @@
 module Api::V1
     class UsersController < ApiController
-        before_action :set_user, only: [:show, :edit, :destroy, :update]
-
+        before_action :set_user, only: [:show, :destroy, :update]
+        #before_action :req_token
         def index
             @users = User.all
         end
@@ -15,9 +15,19 @@ module Api::V1
                 render json: {message: "Usuario creado"}
 
             else
-                render json: {message: "Arroz en el sistema"}
+                render json: {message: "Error al crear usuario"}
             end
     
+        end
+
+        def update
+            @user.update(user_params)
+            head :no_content
+        end
+
+        def destroy
+            @user.destroy
+            head :no_content
         end
 
         def user_params
