@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_many :user_resources, dependent: :destroy
     has_many :resources, through: :user_resources
     validates :email, uniqueness: true
-    has_secure_token :auth_token
+    
 
     def user_activation
         self.active = true
