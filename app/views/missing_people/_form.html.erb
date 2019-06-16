@@ -1,95 +1,98 @@
 <%= render 'shared/errors', obj: @miss %>
-<div class="row">
-  <div class="col-md-12">
-    <%= form_for(@miss, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :name, "Nombre" %>
+<div class="row justify-content-center  align-items-center">
+  <div class="col-12 col-md-10 col-lg-8">
+    <div class="card my-5">
+      <div class="card-head bg-red">
+              <h1 class="text-center my-2 text-white">
+                <% if !@miss.new_record? %>
+                  Editar Desaparecido
+                <% else %>
+                  Nuevo Desaparecido
+                <% end %>
+              </h1>
         </div>
-        <div class="col-md-8">
-          <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre", autofocus: true %>
+        <%= form_for(@miss, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6 justify-content-between">
+              <div class="form-group text-center">
+                <label for="image" class="col-12 text-center"><h3>Fotografia</h3></label>
+                  <%= image_tag(@miss.image_url) if @miss.image? %>
+                  <br/><br/>
+                  <%= f.file_field :image%>
+              </div>
+            </div>
+            <div class="col-4 text-center">
+              <div class="form-group text-center">
+                <label for="title">Nombre</label>
+                <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre", id: "title", autofocus: true %>
+              </div>
+              <div class="form-group text-center">
+                <label for="lastname">Apellidos</label>
+                <%= f.text_field :lastname, class: "form-control",placeholder: "Introduce apellidos", id: "lastname" %>
+              </div>
+              <div class="form-group text-center">
+                <label for="age">Edad</label>
+                <%= f.number_field :age, class: "form-control", id: "age" %>                    
+              </div> 
+              <div class="form-group text-center">
+                <label for="description">Descripción</label>
+                <%= f.text_area :description, class: "form-control",placeholder: "Realiza una breve descripción", id: "description" %>
+              </div> 
+            </div>
+          </div>
+          <div class="row bg-red">
+              <div class="col-12">
+                <h3 class="text-center text-white pt-2"><strong>Descripción Fisica</strong></h3>
+              </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-6">
+              <div class="form-group text-center">
+                <label for="eyes">Ojos</label>
+                <%= f.select :eye, MissingPerson.eyes.keys.to_a,{}, class: "form-control", id: "eyes" %>
+              </div>
+              <div class="form-group text-center">
+                <label for="race">Raza</label>
+                <%= f.select :race, MissingPerson.races.keys.to_a,{}, class: "form-control", id: "race" %>
+              </div>
+              <div class="form-group text-center">
+                <label for="hair">Pelo</label>
+                <%= f.select :hair, MissingPerson.hairs.keys.to_a,{}, class: "form-control", hair: "hair" %>
+              </div>
+              <div class="form-group text-center">
+                <label for="hair_color">Color de Pelo</label>
+                <%= f.select :hair_color, MissingPerson.hair_colors.keys.to_a,{}, class: "form-control", id: "hair_color" %>
+              </div>
+            </div>
+            <div class="col-6">
+            <div class="form-group text-center">
+                <label for="gender">Genero</label>
+                <%= f.select :gender, MissingPerson.genders.keys.to_a,{}, class: "form-control", id: "gender" %>                   
+              </div>
+              <div class="form-group text-center">
+                <label for="height">Altura</label>
+                <%= f.number_field :height, class: "form-control",placeholder: "Introduce apellidos", id: "height" %>
+              </div>
+              <div class="form-group text-center">
+                <label for="weight">Peso</label>
+                <%= f.number_field :weight, class: "form-control",placeholder: "Introduce apellidos", id: "weight" %>
+              </div>
+              <div class="form-group text-center">
+                <label for="complexion">Complexión</label>
+                <%= f.select :complexion, MissingPerson.complexions.keys.to_a,{}, class: "form-control", id: "complexion" %>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :lastname, "Apellidos" %>
+        <div class="card-footer">
+            <div class="text-center">
+                <%= f.submit(@miss.new_record? ? "Añadir" : "Aceptar", class: "btn btn-small btn-primary") %>
+                <%= link_to 'Cancelar'.html_safe, :back, class: "btn btn-small btn-danger" %>            
+            </div>
         </div>
-        <div class="col-md-8">
-          <%= f.text_field :lastname, class: "form-control",placeholder: "Introduce apellidos", autofocus: true %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :age, "Edad" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.number_field :age, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :gender, "Sexo" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :gender, MissingPerson.genders.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :image, "Imagen" %>
-        </div>
-        <div class="col-md-8">
-        <%= image_tag(@miss.image_url) if @miss.image? %>
-          <%= f.file_field :image %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :eye, "Color de los ojos" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :eye, MissingPerson.eyes.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :race, "Raza" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :race, MissingPerson.races.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :hair, "Tipo de pelo" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :hair, MissingPerson.hairs.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :hair_color, "Color del pelo" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :hair_color, MissingPerson.hair_colors.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :complexion, "Complexion" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.select :complexion, MissingPerson.complexions.keys.to_a, class: "form-control" %>
-        </div>
-      </div>
-      <!-- Para formulario de edit -->
-      <!-- Fin de edit de usuario -->
-      <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-          <%= f.submit(@miss.new_record? ? "Añadir una nueva persona" : "Actualizar nueva persona", class: "btn btn-primary btn-lg btn-xlarge") %>
-        </div>
-      </div>
-    <% end %>
+      </form>
+      <% end %>
+    </div>
   </div>
 </div>
