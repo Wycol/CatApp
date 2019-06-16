@@ -25,7 +25,6 @@
             <th scope="col" class="text-center">Estado</th>
             <th scope="col" class="text-center">Editar</th>
             <th scope="col" class="text-center">Borrar</th>
-            <th></th>
         </tr>
       </thead>
       <tbody>
@@ -67,7 +66,6 @@
                 <%= link_to '<i class="material-icons align-middle">delete</i>'.html_safe ,user_path(user), method: :delete, data: {confirm: "¿Desea eliminar el usuario "+user.name+"?"}, class: "btn btn-small btn-danger ml-3"%>
               <% end %>
             </td>
-            <td scope="row"><%= user.created_at %></td>
           </tr>
         <% end %>
       </tbody>
@@ -94,28 +92,9 @@ $(document).ready( function () {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ,7 ]
                 },
             },
-            /* Añadir boton personalizado
-            {
-                text: '<i class="material-icons align-middle">person_add</i> Nuevo',
-                action: function ( e, dt, node, config ) {
-                    alert( 'Button activated' );
-                }
-            }
-            */
         ],
         
         "pagingType": "full_numbers",
-        "columnDefs": [
-                {
-                    "orderData": [11],
-                    "targets": [7]
-                },
-                {
-                    "targets": [11],
-                    "visible": false,
-                    "searchable": false
-                },
-            ],
         "order": [[ 0, "desc" ]],
 
     });

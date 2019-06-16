@@ -19,7 +19,7 @@ window.onmousedown = function (e) {
       <div class="card mt-3">
         <div class="card-head bg-red">
             <h1 class="text-center my-2 text-white">
-              <% if @user.active? %>
+              <% if !@user.new_record? %>
                 Editar Usuario
               <% else %>
                 Nuevo Usuario
@@ -87,12 +87,12 @@ window.onmousedown = function (e) {
             </div>
             <div class="form-group row">
               <div class="col-8 mx-auto">
-                <%= f.select :tipo, User.tipos.keys.to_a, class: "form-control" %>
+                <%= f.select :tipo, User.tipos.keys.to_a,{}, class: "form-control" %>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-8 mx-auto">
-                <%= f.select :perfil, User.perfils.keys.to_a, class: "form-control" %>
+                <%= f.select :perfil, User.perfils.keys.to_a,{}, class: "form-control" %>
               </div>
             </div>
             <div class="form-group">
@@ -112,7 +112,8 @@ window.onmousedown = function (e) {
           <!-- Fin de edit de usuario -->
           <div class="form-group row mb-0">
             <div class="col-6 mx-auto text-center">
-              <%= f.submit(@user.new_record? ? "Registro" : "Aceptar", class: "btn btn-primary btn-lg btn-xlarge") %>
+              <%= f.submit(@user.new_record? ? "Registro" : "Aceptar", class: "btn btn-small btn-primary") %>
+              <%= link_to 'Cancelar'.html_safe, :back, class: "btn btn-small btn-danger" %>
             </div>
           </div>
         <% end %>
