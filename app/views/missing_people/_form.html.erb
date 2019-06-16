@@ -53,25 +53,25 @@
             <div class="col-4">
               <div class="form-group text-center">
                 <label for="eyes">Ojos</label>
-                <%= f.select :eye, MissingPerson.eyes.keys.to_a,{}, class: "form-control", id: "eyes" %>
+                <%= f.select :eye, MissingPerson.eyes.keys.to_a,{:prompt => 'Seleccionar'}, class: "form-control", id: "eyes" %>
               </div>
               <div class="form-group text-center">
                 <label for="race">Raza</label>
-                <%= f.select :race, MissingPerson.races.keys.to_a,{}, class: "form-control", id: "race" %>
+                <%= f.select :race, MissingPerson.races.keys.to_a,{:prompt => 'Seleccionar'}, class: "form-control", id: "race" %>
               </div>
               <div class="form-group text-center">
                 <label for="hair">Pelo</label>
-                <%= f.select :hair, MissingPerson.hairs.keys.to_a,{}, class: "form-control", hair: "hair" %>
+                <%= f.select :hair, MissingPerson.hairs.keys.to_a,{:prompt => 'Seleccionar'}, class: "form-control", hair: "hair" %>
               </div>
               <div class="form-group text-center">
                 <label for="hair_color">Color de Pelo</label>
-                <%= f.select :hair_color, MissingPerson.hair_colors.keys.to_a,{}, class: "form-control", id: "hair_color" %>
+                <%= f.select :hair_color, MissingPerson.hair_colors.keys.to_a,{:prompt => 'Seleccionar'}, class: "form-control", id: "hair_color" %>
               </div>
             </div>
             <div class="col-4">
             <div class="form-group text-center">
                 <label for="gender">Género</label>
-                <%= f.select :gender, MissingPerson.genders.keys.to_a,{}, class: "form-control", id: "gender" %>                   
+                <%= f.select :gender, MissingPerson.genders.keys.to_a,{:prompt => 'Seleccionar'}, class: "form-control", id: "gender" %>                   
               </div>
               <div class="form-group text-center">
                 <label for="height">Altura</label>
@@ -83,7 +83,7 @@
               </div>
               <div class="form-group text-center">
                 <label for="complexion">Complexión</label>
-                <%= f.select :complexion, MissingPerson.complexions.keys.to_a,{}, class: "form-control", id: "complexion" %>
+                <%= f.select :complexion, MissingPerson.complexions.keys.to_a,{:prompt => 'Seleccionar'}, class: "form-control", id: "complexion" %>
               </div>
             </div>
           </div>
