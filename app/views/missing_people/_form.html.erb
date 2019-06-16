@@ -2,7 +2,7 @@
 <div class="row justify-content-center  align-items-center">
   <div class="col-12 col-md-10 col-lg-8">
     <div class="card my-5">
-      <div class="card-head bg-red">
+      <div class="card-head bg-gardient-red">
               <h1 class="text-center my-2 text-white">
                 <% if !@miss.new_record? %>
                   Editar Desaparecido
@@ -17,8 +17,11 @@
             <div class="col-6 justify-content-between">
               <div class="form-group text-center">
                 <label for="image" class="col-12 text-center"><h3>Fotografia</h3></label>
-                  <%= image_tag(@miss.image_url) if @miss.image? %>
-                  <br/><br/>
+                <% if @miss.image_url %>
+                  <%= image_tag @miss.image_url, class: "w-75" %>
+                <% else %>
+                  <%= image_tag 'avatar.png', class: "w-75" %>
+                <% end %>
                   <%= f.file_field :image%>
               </div>
             </div>
@@ -29,11 +32,11 @@
               </div>
               <div class="form-group text-center">
                 <label for="lastname">Apellidos</label>
-                <%= f.text_field :lastname, class: "form-control",placeholder: "Introduce apellidos", id: "lastname" %>
+                <%= f.text_field :lastname, class: "form-control",placeholder: "Introduce los apellidos", id: "lastname" %>
               </div>
               <div class="form-group text-center">
                 <label for="age">Edad</label>
-                <%= f.number_field :age, class: "form-control", id: "age" %>                    
+                <%= f.number_field :age, class: "form-control",placeholder: "Introduce un número entero", id: "age" %>                    
               </div> 
               <div class="form-group text-center">
                 <label for="description">Descripción</label>
@@ -41,13 +44,13 @@
               </div> 
             </div>
           </div>
-          <div class="row bg-red">
+          <div class="row bg-gardient-red">
               <div class="col-12">
-                <h3 class="text-center text-white pt-2"><strong>Descripción Fisica</strong></h3>
+                <h3 class="text-center text-white pt-2"><strong>Descripción física</strong></h3>
               </div>
           </div>
-          <div class="row mt-4">
-            <div class="col-6">
+          <div class="row mt-4 justify-content-center">
+            <div class="col-4">
               <div class="form-group text-center">
                 <label for="eyes">Ojos</label>
                 <%= f.select :eye, MissingPerson.eyes.keys.to_a,{}, class: "form-control", id: "eyes" %>
@@ -65,23 +68,48 @@
                 <%= f.select :hair_color, MissingPerson.hair_colors.keys.to_a,{}, class: "form-control", id: "hair_color" %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
             <div class="form-group text-center">
-                <label for="gender">Genero</label>
+                <label for="gender">Género</label>
                 <%= f.select :gender, MissingPerson.genders.keys.to_a,{}, class: "form-control", id: "gender" %>                   
               </div>
               <div class="form-group text-center">
                 <label for="height">Altura</label>
-                <%= f.number_field :height, class: "form-control",placeholder: "Introduce apellidos", id: "height" %>
+                <%= f.number_field :height, class: "form-control", step: "any", placeholder: "Altura en centímetros", id: "height" %>
               </div>
               <div class="form-group text-center">
                 <label for="weight">Peso</label>
-                <%= f.number_field :weight, class: "form-control",placeholder: "Introduce apellidos", id: "weight" %>
+                <%= f.number_field :weight, class: "form-control",placeholder: "Peso en kilogramos", id: "weight" %>
               </div>
               <div class="form-group text-center">
                 <label for="complexion">Complexión</label>
                 <%= f.select :complexion, MissingPerson.complexions.keys.to_a,{}, class: "form-control", id: "complexion" %>
               </div>
+            </div>
+          </div>
+          <div class="row bg-gardient-red">
+            <div class="col-12">
+              <h3 class="text-center text-white pt-2"><strong>Datos de contacto</strong></h3>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="form-group text-center">
+              <label for="contact_name">Nombre</label>
+              <%= f.text_field :contact_name, class: "form-control",placeholder: "Introduce un nombre", id: "contact_name", required: true %>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group text-center">
+              <label for="relationship">Parentezco</label>
+              <%= f.text_field :relationship, class: "form-control",placeholder: "Ej. Hijo, Padre, Hermano", id: "relationship", required: true %>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group text-center">
+              <label for="phone">Teléfono</label>
+              <%= f.phone_field :phone, class: "form-control",placeholder: "Numero de Teléfono", id: "phone", required: true %>
             </div>
           </div>
         </div>
