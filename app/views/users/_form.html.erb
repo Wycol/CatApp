@@ -4,7 +4,7 @@
       <div class="card mt-3">
         <div class="card-head bg-red">
             <h1 class="text-center my-2 text-white">
-              <% if @user.active? %>
+              <% if !@user.new_record? %>
                 Editar Usuario
               <% else %>
                 Nuevo Usuario
@@ -72,12 +72,12 @@
             </div>
             <div class="form-group row">
               <div class="col-8 mx-auto">
-                <%= f.select :tipo, User.tipos.keys.to_a, class: "form-control" %>
+                <%= f.select :tipo, User.tipos.keys.to_a,{}, class: "form-control" %>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-8 mx-auto">
-                <%= f.select :perfil, User.perfils.keys.to_a, class: "form-control" %>
+                <%= f.select :perfil, User.perfils.keys.to_a,{}, class: "form-control" %>
               </div>
             </div>
             <div class="form-group">
