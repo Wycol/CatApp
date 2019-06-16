@@ -6,7 +6,7 @@ class MissingPerson < ApplicationRecord
     enum hair_color: [:Castaño, :Moreno, :Rubio, :Pelirrojo, :Canoso]
     enum complexion: [:Delgado, :Media, :Obeso]
 
-    #validates :name, :lastname, :age, :gender, :height, :weight, :eye, :race, :hair, :hair_color, :complexion, :phone, :relationship, :contact_name, presence: true
+    validates :name, :lastname, :age, :gender, :height, :weight, :eye, :race, :hair, :hair_color, :complexion, presence: true
 
 
     mount_uploader :image, ImageUploader
