@@ -31,7 +31,7 @@ module Api::V1
         end
 
         def user_params
-            params.permit(:name, :email, :password, :password_confirmation)
+            params.permit(:name, :email, :password, :password_confirmation, :tipo, :active, :age, :perfil, :phone, :dni, resource_ids:[])
         end
 
         def set_user
