@@ -1,4 +1,3 @@
-<%= render 'shared/errors', obj: @miss %>
 <div class="row justify-content-center  align-items-center">
   <div class="col-12 col-md-10 col-lg-8">
     <div class="card my-5">
@@ -13,6 +12,7 @@
         </div>
         <%= form_for(@miss, :html => {class: "form-horizontal", role: "form"}) do |f| %>
         <div class="card-body">
+        <%= render 'shared/errors', obj: @miss %>
           <div class="row">
             <div class="col-6 justify-content-between">
               <div class="form-group text-center">

@@ -27,6 +27,7 @@ window.onmousedown = function (e) {
             </h1>
         </div>
         <div class="card-body">
+        <%= render 'shared/errors', obj: @user %>
           <%= form_for(@user, :html => {class: "", role: "form"}) do |f| %>
           <%= render 'layouts/messages' %>
           <div class="form-group row">
