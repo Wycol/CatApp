@@ -4,7 +4,7 @@ class MissingPerson < ApplicationRecord
     enum race: [:Blanco, :Negro, :Mulato, :Chino, :Indio, :Arabe]
     enum hair: [:Corto, :Largo, :Calvo]
     enum hair_color: [:Castaño, :Moreno, :Rubio, :Pelirrojo, :Canoso]
-    enum complexion: [:Delgado, :Normal, :Obeso]
+    enum complexion: [:Delgado, :Media, :Obeso]
 
     #validates :name, :lastname, :age, :gender, :height, :weight, :eye, :race, :hair, :hair_color, :complexion, :phone, :relationship, :contact_name, presence: true
 
