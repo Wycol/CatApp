@@ -33,7 +33,7 @@ module Api::V1
         end
 
         def missing_person_params
-            params.permit(:name, :lastname, :age, :gender, :image, :description, :height, :weight, :eye, :race, :hair, :hair_color, :complexion)
+            params.permit(:name, :lastname, :age, :gender, :image, :description, :height, :weight, :eye, :race, :hair, :hair_color, :complexion, :phone, :relationship, :contact_name)
         end
 
         def set_miss

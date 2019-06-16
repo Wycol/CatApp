@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(name: "Admin", email: "user@example.com", password: "changeme", admin: true, active: true, tipo: "Admin")
-5.times do
+10.times do
     User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "messi", age: Faker::Number.between(20,60), perfil: Faker::Number.between(0,7), dni: Faker::DNI.dni, phone: Faker::PhoneNumber.phone_number )
+    Resource.create(name: Faker::Artist.name , localization: Faker::Address.state, category: Faker::Number.between(0,7))
 end
