@@ -1,13 +1,115 @@
-<%= render 'shared/page_title', title: "Persona perdida #{@miss.name}"  %>
-<div class="row">
-  <h1>Nombre: </h1>
-  <%= @miss.name %></div>
-<h1>Apellidos: </h1>
-<%= @miss.lastname %>
-<h1>Edad</h1>
-<%= @miss.age %>
-<h1>Imagen</h1>
- <% if @miss.image_url %>
-    <%= image_tag @miss.image_url %>
- <% end %>
+<div class="row justify-content-center  align-items-center">
+  <div class="col-12 col-md-10 col-lg-8">
+    <div class="card my-5">
+      <div class="card-head bg-gardient-red">
+              <h1 class="text-center my-2 text-white">Detalles</h1>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6 justify-content-between">
+              <div class="form-group text-center">
+                <% if @miss.image_url %>
+                  <%= image_tag @miss.image_url, class: "w-75" %>
+                <% else %>
+                  <%= image_tag 'avatar.png', class: "w-75" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-4 text-center">
+              <div class="form-group text-center">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" value="<%= @miss.lastname %>" class="form-control" disabled>
+              </div>
+              <div class="form-group text-center">
+                <label for="lastname">Apellidos</label>
+                <input type="text" id="lastname" value="<%= @miss.lastname %>" class="form-control" disabled>
+              </div>
+              <div class="form-group text-center">
+                <label for="age">Edad</label>
+                <input type="text" id="age" value="<%= @miss.age %>" class="form-control" disabled>
+              </div> 
+              <div class="form-group text-center">
+                <label for="description">Descripción</label>
+                <textarea id="description" value="<%= @miss.description %>" class="form-control" disabled>
+                </textarea>
+              </div> 
+            </div>
+          </div>
+          <div class="row bg-gardient-red">
+              <div class="col-12">
+                <h3 class="text-center text-white pt-2"><strong>Descripción física</strong></h3>
+              </div>
+          </div>
+          <div class="row mt-4 justify-content-center">
+            <div class="col-4">
+              <div class="form-group text-center">
+                <label for="eyes">Ojos</label>
+                <input type="text" id="eyes" value="<%= @miss.eye %>" class="form-control" disabled>                
+              </div>
+              <div class="form-group text-center">
+                <label for="race">Raza</label>
+                <input type="text" id="race" value="<%= @miss.race %>" class="form-control" disabled>                
+              </div>
+              <div class="form-group text-center">
+                <label for="hair">Pelo</label>
+                <input type="text" id="hair" value="<%= @miss.hair %>" class="form-control" disabled>                
+              </div>
+              <div class="form-group text-center">
+                <label for="hair_color">Color de Pelo</label>
+                <input type="text" id="hair_color" value="<%= @miss.hair_color %>" class="form-control" disabled>                
+              </div>
+            </div>
+            <div class="col-4">
+            <div class="form-group text-center">
+                <label for="gender">Género</label>
+                <input type="text" id="gender" value="<%= @miss.gender %>" class="form-control" disabled>                
+              </div>
+              <div class="form-group text-center">
+                <label for="height">Altura</label>
+                <input type="text" id="height" value="<%= @miss.height %>" class="form-control" disabled>                
+              </div>
+              <div class="form-group text-center">
+                <label for="weight">Peso</label>
+                <input type="text" id="weight" value="<%= @miss.weight %>" class="form-control" disabled>                
+              </div>
+              <div class="form-group text-center">
+                <label for="complexion">Complexión</label>
+                <input type="text" id="complexion" value="<%= @miss.complexion %>" class="form-control" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="row bg-gardient-red">
+            <div class="col-12">
+              <h3 class="text-center text-white pt-2"><strong>Datos de contacto</strong></h3>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="form-group text-center">
+              <label for="contact_name">Nombre</label>
+                <input type="text" id="contact_name" value="<%= @miss.contact_name %>" class="form-control" disabled>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group text-center">
+              <label for="relationship">Parentezco</label>
+                <input type="text" id="relationship" value="<%= @miss.relationship %>" class="form-control" disabled>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group text-center">
+              <label for="phone">Teléfono</label>
+                <input type="text" id="phone" value="<%= @miss.phone %>" class="form-control" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+            <div class="text-center">
+                <%= link_to 'Cancelar'.html_safe, :back, class: "btn btn-small btn-danger" %>            
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
 
