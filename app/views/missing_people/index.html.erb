@@ -40,7 +40,7 @@
               <img src="<%= miss.image %>" width="100px"/>
             <% end %>
             </td>
-            <td class="align-middle" scope="row"><%= link_to miss.name, user_path(miss.id) %></td>
+            <td class="align-middle" scope="row"><%= link_to miss.name, missing_person_path(miss.id) %></td>
             <td class="align-middle" scope="row"><%= miss.lastname %></td>
             <td class="align-middle" scope="row"><%= miss.age %></td>
             <td class="align-middle" scope="row"><%= miss.gender %></td>
