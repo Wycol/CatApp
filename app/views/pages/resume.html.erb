@@ -1,0 +1,113 @@
+<div class="contaner-fluid">
+<div class="row bg-gardient-red mb-3">
+  <div class="col-12">
+    <h1 class="mt-3 text-center text-white">Resumen</h1>
+  </div>
+</div>
+<%= render 'layouts/messages' %>
+<!-- Tarjetas -->
+<div class="row mt-4">
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Recursos sin formulario</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+          </div>
+          <div class="col-3">
+            <i class="material-icons align-middle text-secondary" style="font-size: 40px !important;">format_align_justify</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Usuarios sin recurso</div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @users_not_assign_percent%>%</div>
+              </div>
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: <%= @users_not_assign_percent%>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <i class="material-icons align-middle text-secondary " style="font-size: 40px !important;">work</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Activaciónes pendientes</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @not_active_users %></div>
+          </div>
+          <div class="col-3">
+            <i class="material-icons align-middle text-secondary w-100" style="font-size: 40px !important;">how_to_reg</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tarjetas-->
+
+<div class="row">
+  <div class="card-deck mt-5">
+    <% Resource.all.each do |resource| %>
+      <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+        <div class="card mb-3 shadow">
+          <div class="card-body text-center">
+            <%= link_to resource.name.capitalize, resource_path(resource), class: "h2 card-title" %>
+            <div class="row justify-content-center">
+              <div class="col-5 text-left my-3">
+                <span class="card-text text-center"><strong>Categoría:</strong></span><br/>
+                <span class="card-text text-center"><strong>Localización:</strong></span>
+                <span class="card-text text-center"><strong>Dotación:</strong></span>
+              </div>
+              <div class="col-4 text-left my-3">
+                <%= resource.category %><br/>
+                <%= resource.localization %><br/>
+                <%= resource.users.count %>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <small class="text-muted">Creado <%= resource.created_at %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

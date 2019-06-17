@@ -21,7 +21,7 @@
 
   <body class="">
       <% if logged_in? %>
-        <div class="container-fluid">
+        <div class="container-fluid d-flex flex-column vh-100 justify-content-between">
         <%= render 'layouts/navigation' %>
 
         <%= yield %>
