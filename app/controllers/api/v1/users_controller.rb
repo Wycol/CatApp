@@ -1,7 +1,7 @@
 module Api::V1
     class UsersController < ApiController
         before_action :set_user, only: [:show, :destroy, :update]
-        before_action :req_token
+        #before_action :req_token
         def index
             @users = User.all
         end
