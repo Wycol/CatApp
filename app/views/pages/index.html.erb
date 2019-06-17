@@ -63,15 +63,15 @@ body, html {
   <div class="col-10 p-3">
     <div class="row">
       <div class="col-4">
-        <span class="w3-xlarge">54</span><br>
+        <span class="w3-xlarge"><%= User.all.count%>+</span><br>
         Usuarios
       </div>
       <div class="col-4">
-        <span class="w3-xlarge">15</span><br>
+        <span class="w3-xlarge"><%= Resource.all.count%>+</span><br>
         Recursos
       </div>
       <div class="col-4">
-        <span class="w3-xlarge">237</span><br>
+        <span class="w3-xlarge"><%= MissingPerson.all.count%>+</span><br>
         Desaparecidos
       </div>
     </div>
