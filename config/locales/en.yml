@@ -45,9 +45,6 @@ en:
             category:
               blank: "La categoría no puede estar vacía."
   
-  activerecord:
-    errors:
-      models: 
         missing_person: 
           attributes:
             name:
@@ -73,9 +70,6 @@ en:
             complexion:
               blank: "La complexión no puede estar vacía."
   
-  activerecord:
-    errors:
-      models: 
         user: 
           attributes:
             name:
