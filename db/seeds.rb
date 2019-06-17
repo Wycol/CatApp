@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: "Admin", email: "user@example.com", password: "changeme", admin: true, active: true, tipo: "Admin")
+User.create(name: "Admin", email: "user@example.com", password: "changeme", dni: Faker::DNI.dni, admin: true, active: true, tipo: "Admin")
 10.times do
     User.create(name: Faker::Name.name, email: Faker::Internet.unique.email, password: "test", age: Faker::Number.between(20,60), perfil: Faker::Number.between(0,7), dni: Faker::DNI.dni, phone: Faker::PhoneNumber.phone_number )
     Resource.create(name: Faker::Artist.name , localization: Faker::Address.state, category: Faker::Number.between(0,6))
