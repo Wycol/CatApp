@@ -60,8 +60,7 @@ $(document).ready( function () {
             'excel',
             {
                 extend: 'pdf',
-                title: 'Usuarios',
-                messageTop: 'Listado de usuarios asignados al recurso.',
+                title: 'Usuario asignados a <%= @resource.name%>',
             },
         ],
         
