@@ -1,9 +1,10 @@
 class ResourcesController < ApplicationController
     before_action :set_resource, only: [:show, :edit, :destroy, :update]
-    before_action :require_admin, except: [:index, :show]
+    before_action :require_admin, except: [:index, :show, :edit, :update]
     before_action :require_user
     def index
         @resources = Resource.all
+        @resources_filter = current_user.resources
     end
 
     def new
@@ -29,7 +30,7 @@ class ResourcesController < ApplicationController
     def update
         if @resource.update(resource_params)
             flash[:success] = "Se actualizaron los datos de recurso."
-            redirect_to resources_path(@resource)
+            redirect_to resource_path(@resource)
         else
             render 'edit'
     end
@@ -53,10 +54,10 @@ class ResourcesController < ApplicationController
         @resource = Resource.find(params[:id])
     end
 
-    def require_admin
-        if logged_in? && !current_user.admin?
-          flash[:danger] = "Solo los administradores pueden hacer eso."
-          redirect_to root_path
-        end
-    end
+    # def require_admin
+    #     if logged_in? && !current_user.admin?
+    #       flash[:danger] = "Solo los administradores pueden hacer eso."
+    #       redirect_to root_path
+    #     end
+    # end
 end

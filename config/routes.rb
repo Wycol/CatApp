@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       resources :users
       resources :missing_people
       resources :resources
+      post 'login' => 'sessions#create'
+      post 'logout' => 'sessions#destroy'
     end
   end
 end

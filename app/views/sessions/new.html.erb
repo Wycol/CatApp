@@ -1,9 +1,9 @@
 <div id="login" class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card mt-5">
                 <div class="card-body">
-                    <h3 class="text-center my-4">Inicia sesión</h3>
+                    <h3 class="text-center my-3">Inicia sesión en CatApp</h3>
                     <%= render 'layouts/messages' %>
                     <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
 
@@ -34,17 +34,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row">
                             <div class="col-6 mx-auto text-center">
-                            <%= f.submit "Log in", class: "btn btn-danger btn-lg"%>
+                            <%= f.submit "Iniciar sesión", class: "btn btn-primary "%>
                             </div>
                         </div>
 
                         <% end %>
 
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-12  text-center">
-                             <%= link_to "Registrate", signup_path, class: "btn btn-link"%> 
+                            <span>¿Eres un nuevo usuario? <%= link_to "Registrate", signup_path, class: "btn btn-link"%></span>
+                              
                             </div>
                         </div>
                         

@@ -9,18 +9,23 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user.active
-      if user && user.authenticate(params[:session][:password])
-        session[:user_id] = user.id
-        flash[:success] = "Logeado correctamente"
-        redirect_to root_path
+    if user
+      if user.active
+        if user && user.authenticate(params[:session][:password])
+          session[:user_id] = user.id
+          flash[:success] = "Logeado correctamente"
+          redirect_to root_path
+        else
+          flash.now[:danger] = "Los datos de login son incorrectos."
+          render 'new'
+        end
       else
-        flash.now[:danger] = "Los datos de login son incorrectos."
+        flash.now[:danger] = "El usuario no ha sido activado aún, contacte con el administrador."
         render 'new'
       end
     else
-      flash.now[:danger] = "El usuario no ha sido activado aún, contacte con el administrador."
-      render 'new'
+      flash.now[:danger] = "El usuario no existe."
+        render 'new'
     end
   end
 

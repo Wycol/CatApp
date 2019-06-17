@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_09_125841) do
+ActiveRecord::Schema.define(version: 2019_06_16_105212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 2019_06_09_125841) do
     t.bigint "resource_id"
     t.string "value"
     t.string "label"
-    t.string "input_type"
+    t.integer "input_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size"
     t.index ["resource_id"], name: "index_form_fields_on_resource_id"
   end
 
@@ -33,12 +34,23 @@ ActiveRecord::Schema.define(version: 2019_06_09_125841) do
     t.integer "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.float "height"
+    t.float "weight"
+    t.integer "eye"
+    t.integer "race"
+    t.integer "hair"
+    t.integer "hair_color"
+    t.integer "complexion"
+    t.string "contact_name"
+    t.string "relationship"
+    t.string "phone"
   end
 
   create_table "resources", force: :cascade do |t|
     t.string "name"
     t.string "localization"
-    t.string "category"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,8 +69,13 @@ ActiveRecord::Schema.define(version: 2019_06_09_125841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.integer "tipo"
+    t.integer "tipo", default: 0
     t.boolean "active", default: false
+    t.integer "age"
+    t.integer "perfil"
+    t.string "dni"
+    t.string "phone"
+    t.string "auth_token"
   end
 
 end

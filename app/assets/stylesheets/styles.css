@@ -6,3 +6,17 @@
     background-size: cover;
     height: 100vh;
 }
+
+.bg-red{
+    background-color: #e33f20;
+}
+.bg-gardient-red{
+    background: rgba(230,80,53,1);
+background: -moz-linear-gradient(top, rgba(230,80,53,1) 0%, rgba(227,63,32,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(230,80,53,1)), color-stop(100%, rgba(227,63,32,1)));
+background: -webkit-linear-gradient(top, rgba(230,80,53,1) 0%, rgba(227,63,32,1) 100%);
+background: -o-linear-gradient(top, rgba(230,80,53,1) 0%, rgba(227,63,32,1) 100%);
+background: -ms-linear-gradient(top, rgba(230,80,53,1) 0%, rgba(227,63,32,1) 100%);
+background: linear-gradient(to bottom, rgba(230,80,53,1) 0%, rgba(227,63,32,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e65035', endColorstr='#e33f20', GradientType=0 );
+}

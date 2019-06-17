@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :destroy, :update, :activate, :deactivate]
-    before_action :require_user, except: [:new, :create]
+    before_action :require_admin, except: [:new, :create]
     def index
-        @users = User.all.where(admin: false).order(:name)
+        @users = User.all.order(:name)
     end
 
     def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         @user= User.new(user_params)
         if @user.save
             flash[:success] = "Usuario creado!"
-            redirect_to user_path(@user)
+            redirect_to root_path
         else
             render 'new'
         end
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :tipo, resource_ids:[])
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :tipo, :active, :age, :perfil, :phone, :dni, resource_ids:[])
     end
 
     def set_user
