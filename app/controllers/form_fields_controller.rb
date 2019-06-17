@@ -13,6 +13,15 @@ class FormFieldsController < ApplicationController
         end
     end
 
+    def destroy
+      @campo=FormField.find(params[:id])
+      resource = @campo.resource
+
+      @campo.destroy
+      flash[:danger]="Campo eliminado"
+      redirect_to edit_resource_path(resource)
+      
+  end
 
     private
     def form_field_params
