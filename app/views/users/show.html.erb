@@ -21,6 +21,21 @@
         <li class="list-group-item"><strong>Antiguedad: </strong>
             <%= @user.created_at.strftime('%d')+ '/' +@user.created_at.strftime('%m')+ '/' +@user.created_at.strftime('%Y') %>     
         </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-6">
+              <strong>Recursos asignados:</strong>
+            </div>
+            <% @user.resources.each do |resource| %>
+            <div class="col-3">
+              
+                <h4><span class="badge bg-red text-white w-100"><%= link_to resource.name, resource, class: "text-decoration-none text-reset" %></span></h4>
+              
+            </div>
+            <% end %>
+          </div> 
+        </li>
+
       </ul>
       <div class="card-footer text-center">
       <%= link_to '<i class="material-icons align-middle">undo</i> Volver'.html_safe, :back, class: "btn btn-small btn-primary" %>

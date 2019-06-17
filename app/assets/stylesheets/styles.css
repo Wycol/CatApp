@@ -7,8 +7,16 @@
     height: 100vh;
 }
 
+.text-red{
+    color: #e33f20;
+}
+
 .bg-red{
     background-color: #e33f20;
+}
+
+.bg-light-red{
+    background-color: #ef6544;
 }
 .bg-gardient-red{
     background: rgba(230,80,53,1);

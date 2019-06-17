@@ -9,7 +9,8 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><strong>Categoria: </strong><%= @resource.category %></li>
         <li class="list-group-item"><strong>Localización: </strong><%= @resource.localization %></li>
-        <li class="list-group-item"><strong>Dotación asiganada: </strong><%= @resource.users.count %></li>
+        <li class="list-group-item"><strong>Dotación asignada: </strong><%= @resource.users.count %></li>
+        <li class="list-group-item"><strong>Campos de formulario: </strong><%= @resource.form_fields.count %></li>
         <li class="list-group-item"><strong>Creación: </strong>
             <%= @resource.created_at.strftime('%d')+ '/' +@resource.created_at.strftime('%m')+ '/' +@resource.created_at.strftime('%Y') %>     
         </li>
