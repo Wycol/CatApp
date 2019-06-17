@@ -1,14 +1,72 @@
-<%= render 'shared/page_title', title: "Recurso #{@resource.name}"  %>
-<div class="row">
-  <h1>Nombre: </h1>
-  <%= @resource.name %>
-<h1>Localizacion: </h1>
-<%= @resource.localization %>
-<h1>Categoria</h1>
-<%= @resource.category %>
+<%= render 'shared/page_title', title: "Detalles del Recurso"  %>
+
+<div class="row justify-content-around">
+  <div class="col-3">
+    <div class="card mx-auto" style="">
+      <div class="card-header">
+        <h2 class="text-center"><%= @resource.name %></h2>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Categoria: </strong><%= @resource.category %></li>
+        <li class="list-group-item"><strong>Localización: </strong><%= @resource.localization %></li>
+        <li class="list-group-item"><strong>Dotación asiganada: </strong><%= @resource.users.count %></li>
+        <li class="list-group-item"><strong>Creación: </strong>
+            <%= @resource.created_at.strftime('%d')+ '/' +@resource.created_at.strftime('%m')+ '/' +@resource.created_at.strftime('%Y') %>     
+        </li>
+      </ul>
+      <div class="card-footer text-center">
+      <%= link_to '<i class="material-icons align-middle">undo</i> Volver'.html_safe, :back, class: "btn btn-small btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+   <table id="dataTable" class="table table-striped table-hover display">
+      <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Perfil</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @resource.users.each do |user| %>
+          <tr>
+            <td scope="row"><%= user.id %></td>
+            <td scope="row"><%= link_to user.name, user_path(user.id) %></td>
+            <td scope="row"><%= user.phone %></td>
+            <td scope="row"><%= user.perfil %></td>
+            <td scope="row"><%= user.email.capitalize %></td>
+            <td scope="row"><%= user.tipo %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<% @resource.form_fields.each do |field|%>
-  <h1><%= field.label%></h1>
-  <%= field.value %>
-<% end %>
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+        "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
+            },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 
+            'csv', 
+            'excel',
+            {
+                extend: 'pdf',
+                title: 'Usuario asignados a <%= @resource.name%>',
+            },
+        ],
+        
+        "pagingType": "full_numbers",
+        "order": [[ 0, "desc" ]],
+
+    });
+});
+</script>
