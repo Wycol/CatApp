@@ -19,5 +19,21 @@ module Api::V1
         end
     end
 
+    def destroy
+        if request.headers[:token].present?
+            user = User.find_by(auth_token: request.headers[:token].to_s)
+            if user
+                user.auth_token = nil
+                user.save
+                render json: { Success: "Has deslogeado correctamente. "}
+            else
+                render json: { Error: "El token es incorrecto o no existe"}
+            end
+        else
+        render json: { Error: "No estas logeado. "}
+
+      end
+    end
+
     end
 end
