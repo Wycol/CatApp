@@ -27,7 +27,7 @@ class MissingPeopleController < ApplicationController
     def update
         if @miss.update(missing_person_params)
             flash[:success] = "Se actualizaron los datos de la persona perdida."
-                redirect_to missing_person_path(@miss)
+                redirect_to missing_people_path
         else
             render 'edit'
         end
