@@ -59,33 +59,30 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-8 text-center py-4">
-            <!-- Campos extra del formulario  -->
-            <%= f.fields_for :form_fields do |form| %>
-              <div class="form-group text-center">
-                  <%= form.label :label, form.object.label %>
-                <div class="input-group mb-3">
-                  <% if form.object.input_type == "Texto"%>
-                    <%= form.text_field :value, class: "form-control" %>
-                  <% end %>
-                  <% if form.object.input_type == "Número"%>
-                    <%= form.number_field :value, class: "form-control" %>
-                  <% end %>
-                  <% if form.object.input_type == "Descripción"%>
-                    <%= form.text_area :value, class: "form-control", rows: "5", maxlength: 255 %>
-                  <% end %>
-                  <div class="input-group-append">
-                    <%= link_to form_field_path(form.object.id), method: :delete, data: { confirm: "Estas seguro de que quieres borrarlo?" }, title: 'Eliminar campo' do %>
-                    <i class="material-icons align-middle text-danger">close</i>
+              <!-- Campos extra del formulario  -->
+              <%= f.fields_for :form_fields do |form| %>
+                <div class="form-group text-center">
+                    <%= form.label :label, form.object.label %>
+                  <div class="input-group mb-3">
+                    <% if form.object.input_type == "Texto"%>
+                      <%= form.text_field :value, class: "form-control" %>
                     <% end %>
+                    <% if form.object.input_type == "Número"%>
+                      <%= form.number_field :value, class: "form-control" %>
+                    <% end %>
+                    <% if form.object.input_type == "Descripción"%>
+                      <%= form.text_area :value, class: "form-control", rows: "5", maxlength: 255 %>
+                    <% end %>
+                    <div class="input-group-append">
+                      <%= link_to form_field_path(form.object.id), method: :delete, data: { confirm: "Estas seguro de que quieres borrarlo?" }, title: 'Eliminar campo' do %>
+                      <i class="material-icons align-middle text-danger">close</i>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
-
-
-            
-            <!-- Fin de campos extra de formulario  -->
-          </div>
+              <% end %>
+              <!-- Fin de campos extra de formulario  -->
+            </div>
           </div>
         </div>
         <div class="card-footer">
