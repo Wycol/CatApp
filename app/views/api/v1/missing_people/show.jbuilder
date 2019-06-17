@@ -14,3 +14,6 @@ json.id @miss.id
     json.complexion @miss.complexion
     json.created_at @miss.created_at
     json.updated_at @miss.updated_at
+    json.contact_name @miss.contact_name
+    json.relationship @miss.relationship
+    json.phone @miss.phone

@@ -15,4 +15,7 @@ json.array! @missPeople do |person|
     json.complexion person.complexion
     json.created_at person.created_at
     json.updated_at person.updated_at
+    json.contact_name person.contact_name
+    json.relationship person.relationship
+    json.phone person.phone
   end
