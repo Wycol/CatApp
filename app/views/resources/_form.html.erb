@@ -1,113 +1,123 @@
 <%= render 'shared/errors', obj: @resource %>
-<div class="row">
-  <div class="col-md-12">
-    <%= form_for(@resource, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-      <% if logged_in? && current_user.tipo != "Admin" %>
-        <div class="form-group">
-          <div class="control-label col-md-2">
-            <%= f.label :name, "Nombre" %>
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div class="card my-5">
+      <div class="card-head bg-gardient-red">
+        <h1 class="text-center my-2 text-white">
+          <% if !@resource.new_record? %>
+            Editar Recurso
+          <% else %>
+            Nuevo Recurso
+          <% end %>
+        </h1>
+      </div>
+      <%= form_for(@resource, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-8">
+              <% if logged_in? && current_user.tipo != "Admin" %>
+            <div class="form-group text-center">
+              <label for="name">Nombre</label>
+              <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Introduce el nombre del recurso", autofocus: true, readonly: true %>
+            </div>
+            <div class="form-group text-center">
+              <label for="localization">Localización</label>
+              <%= f.text_field :localization, class: "form-control", id: "localization", placeholder: "Introduce localización", readonly: true%>
+            </div>
+            <div class="form-group text-center">
+              <label for="category">Categoría</label>
+              <%= f.select :category, Resource.categories.keys.to_a, {class: 'form-control'}, {id: "category"}, { disabled: true } %>
+            </div>
+          <% else %>
+            <div class="form-group text-center">
+              <label for="name">Nombre</label>
+              <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Introduce el nombre del recurso", autofocus: true %>
+            </div>
+            <div class="form-group text-center">
+              <label for="localization">Localización</label>
+              <%= f.text_field :localization, class: "form-control", id: "localization", placeholder: "Introduce localización"%>
+            </div>
+            <div class="form-group text-center">
+              <label for="category">Categoría</label>
+              <%= f.select :category, Resource.categories.keys.to_a,{}, {class: 'form-control'} %>
+            </div>
+          <% end %>
+            </div>
           </div>
-          <div class="col-md-8">
-            <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre del recurso", autofocus: true, readonly: true %>
+          <div class="row bg-gardient-red">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <h3 class="text-center text-white pt-2"><strong>Formulario</strong></h3>
+            </div>
+            <div class="col-3 text-center">
+              <!-- Para formulario de edit con el modal  -->
+              <% if !@resource.new_record? && current_user.tipo == "Admin" %>
+              <!-- BOTON DE ABRIR EL MODAL -->
+              <button type="button" class="btn btn-small btn-light m-2" data-toggle="modal" data-target="#newfield"><i class="material-icons align-middle">playlist_add</i></button>
+              <% end %> 
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-8 text-center py-4">
+            <!-- Campos extra del formulario  -->
+            <%= f.fields_for :form_fields do |form| %>
+              <div class="form-group text-center">
+                  <%= form.label :label, form.object.label %>
+                <div class="input-group mb-3">
+                  <% if form.object.input_type == "Texto"%>
+                    <%= form.text_field :value, class: "form-control" %>
+                  <% end %>
+                  <% if form.object.input_type == "Número"%>
+                    <%= form.number_field :value, class: "form-control" %>
+                  <% end %>
+                  <% if form.object.input_type == "Descripción"%>
+                    <%= form.text_area :value, class: "form-control", rows: "5", maxlength: 255 %>
+                  <% end %>
+                  <div class="input-group-append">
+                    <%= link_to form_field_path(form.object.id), method: :delete, data: { confirm: "Estas seguro de que quieres borrarlo?" }, title: 'Eliminar campo' do %>
+                    <i class="material-icons align-middle text-danger">close</i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+
+            
+            <!-- Fin de campos extra de formulario  -->
+          </div>
           </div>
         </div>
-        <div class="form-group">
-          <div class="control-label col-md-2">
-            <%= f.label :localization %>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :localization, class: "form-control", placeholder: "Introduce localización", readonly: true%>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="control-label col-md-2">
-            <%= f.label :category, "Categoria" %>
-          </div>
-          <div class="col-8">
-            <%= f.select :category, Resource.categories.keys.to_a, {class: 'form-control'}, { disabled: true } %>
-          </div>
-        </div>
-      <% else %>
-        <div class="form-group">
-          <div class="control-label col-md-2">
-            <%= f.label :name, "Nombre" %>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :name, class: "form-control",placeholder: "Introduce el nombre del recurso", autofocus: true %>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="control-label col-md-2">
-            <%= f.label :localization %>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :localization, class: "form-control", placeholder: "Introduce localización" %>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="control-label col-md-2">
-            <%= f.label :category, "Categoria" %>
-          </div>
-          <div class="col-8">
-            <%= f.select :category, Resource.categories.keys.to_a, class: "form-control" %>
-          </div>
+        <div class="card-footer">
+            <div class="text-center">
+               <%= f.submit "Aceptar", class: "btn btn-small btn-primary" %>
+              <%= link_to 'Cancelar'.html_safe, :back, class: "btn btn-small btn-danger" %>            
+            </div>
         </div>
       <% end %>
-      <!-- Campos extra del formulario  -->
-      <%= f.fields_for :form_fields do |form| %>
-        <div class="form-group">
-          <div class="control-label col-md-2">
-            <%= form.label :label, form.object.label %>
-          </div>
-          <% if form.object.input_type == "Texto"%>
-            <div class="col-md-8">
-              <%= form.text_field :value, class: "form-control" %>
-            </div>
-          <% end %>
-          <% if form.object.input_type == "Número"%>
-            <div class="col-md-8">
-              <%= form.number_field :value, class: "form-control" %>
-            </div>
-          <% end %>
-          <% if form.object.input_type == "Descripción"%>
-            <div class="col-md-8">
-              <%= form.text_area :value, class: "form-control" %>
-            </div>
-          <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE AÑADIR CAMPO NUEVO -->
+<div class="modal fade" id="newfield" role="dialog">
+  <div class="modal-dialog edit-news">
+    <div class="modal-content">
+      <div class="modal-header bg-gardient-red">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <h3 class="modal-title text-center text-white pt-2"><strong>Añadir campo</strong></h3>
         </div>
-      <% end %>
-      <!-- Fin de campos extra de formulario  -->
-      <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-          <%= f.submit(@resource.new_record? ? "Crear un nuevo recurso" : "Actualizar el recurso", class: "btn btn-primary btn-lg btn-xlarge") %>
+        <div class="col-3 text-center">
+          <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close"><i class="material-icons align-middle text-white">close</i></button>
         </div>
       </div>
-    <% end %>
-  </div>
-  <!-- Para formulario de edit con el modal  -->
-  <% if !@resource.new_record? && current_user.admin %>
-    <!-- BOTON DE ABRIR EL MODAL -->
-<button type="button" class="btn btn-primary success" data-toggle="modal" data-target="#newfield">Agregar campo
- </button>    
-    <!-- MODAL DE AÑADIR CAMPO NUEVO -->
-    <div class="modal fade" id="newfield" role="dialog">
-      <div class="modal-dialog edit-news">
-        <div class="modal-content">
-          <header class="modal-header">
-            <h3 class="modal-title">Añadir campo nuevo <button type="button" class="close btn btn-xs" data-dismiss="modal" aria-label="Close">X</button></h3>
-          </header>
-          <div class="modal-body">
-            <div id="new">
-              <% @new_field = FormField.new %>
-              <%= form_for @new_field, html: {class: 'form-horizontal'} do |f| %>
-                <%= render 'modal_field_form', f: f %>
-              <% end %>
-            </div>
-            <footer class="modal-footer">
-            </footer>
-          </div>
-        </div>
+      <div class="modal-body">
+          <% @new_field = FormField.new %>
+          <%= form_for @new_field, html: {class: 'form-horizontal'} do |f| %>
+            <%= render 'modal_field_form', f: f %>
+          <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
