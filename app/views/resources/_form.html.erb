@@ -39,7 +39,7 @@
             </div>
             <div class="form-group text-center">
               <label for="category">Categoría</label>
-              <%= f.select :category, Resource.categories.keys.to_a,{}, {class: 'form-control'} %>
+              <%= f.select :category, Resource.categories.keys.to_a,{:prompt => 'Seleccionar'}, {class: 'form-control'} %>
             </div>
           <% end %>
             </div>
