@@ -30,4 +30,65 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    format: "%{message}"
+
+  activerecord:
+    errors:
+      models: 
+        resource: 
+          attributes:
+            name:
+              blank: "El nombre no puede estar vacío."
+            localization:
+              blank: "La localización no puede estar vacía"
+            category:
+              blank: "La categoría no puede estar vacía."
+  
+  activerecord:
+    errors:
+      models: 
+        missing_person: 
+          attributes:
+            name:
+              blank: "El nombre no puede estar vacío."
+            lastname:
+              blank: "Los apellidos no pueden estar vacíos"
+            age:
+              blank: "La edad no puede estar vacía."
+            gender:
+              blank: "El genero no puede estar vacío."
+            height:
+              blank: "El peso no puede estar vacío."
+            weight:
+              blank: "La altura no puede estar vacía."
+            eye:
+              blank: "El color de ojos no puede estar vacío."
+            race:
+              blank: "La raza no puede estar vacía."
+            hair:
+              blank: "El pelo no puede estar vacío."
+            hair_color:
+              blank: "El color de pelo no puede estar vacío."
+            complexion:
+              blank: "La complexión no puede estar vacía."
+  
+  activerecord:
+    errors:
+      models: 
+        user: 
+          attributes:
+            name:
+              blank: "El nombre no puede estar vacío."
+            age:
+              blank: "La edad no puede estar vacía."
+            password:
+              blank: "La contraseña no puede estar vacía."
+            dni:
+              blank: "El dni no puede estar vacío."
+              wrong_length: "Introduce un dni correcto."
+            
+
+
+              
+              

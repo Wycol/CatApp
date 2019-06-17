@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_105212) do
     t.integer "complexion"
     t.string "contact_name"
     t.string "relationship"
-    t.integer "phone"
+    t.string "phone"
   end
 
   create_table "resources", force: :cascade do |t|

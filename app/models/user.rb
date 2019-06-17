@@ -6,6 +6,8 @@ class User < ApplicationRecord
     has_many :user_resources, dependent: :destroy
     has_many :resources, through: :user_resources
     validates :email, uniqueness: true
+    validates :name, presence: true
+    #validates :dni, presence: true, length: { is: 9 }
 
     def user_activation
         self.active = true
