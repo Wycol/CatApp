@@ -10,32 +10,61 @@
 </div>
 <%= render 'layouts/messages' %>
 <div class="card-deck">
-<% @resources.each do |resource| %>
-  <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
-    <div class="card mb-3">
-      <div class="card-body text-center">
-        <%= link_to resource.name.capitalize, resource_path(resource), class: "h2 card-title" %>
-        <div class="row justify-content-center">
-          <div class="col-5 text-left my-3">
-            <span class="card-text text-center"><strong>Categoría:</strong></span><br/>
-            <span class="card-text text-center"><strong>Localización:</strong></span>
-            <span class="card-text text-center"><strong>Dotación:</strong></span>
+<% if logged_in? && current_user.tipo == "Admin" %>
+  <% @resources.each do |resource| %>
+    <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+      <div class="card mb-3">
+        <div class="card-body text-center">
+          <%= link_to resource.name.capitalize, resource_path(resource), class: "h2 card-title" %>
+          <div class="row justify-content-center">
+            <div class="col-5 text-left my-3">
+              <span class="card-text text-center"><strong>Categoría:</strong></span><br/>
+              <span class="card-text text-center"><strong>Localización:</strong></span>
+              <span class="card-text text-center"><strong>Dotación:</strong></span>
+            </div>
+            <div class="col-4 text-left my-3">
+              <%= resource.category %><br/>
+              <%= resource.localization %><br/>
+              <%= resource.users.count %>
+            </div>
           </div>
-          <div class="col-4 text-left my-3">
-            <%= resource.category %><br/>
-            <%= resource.localization %><br/>
-            <%= resource.users.count %>
-          </div>
+          <%= link_to '<i class="material-icons align-middle">settings</i>Editar'.html_safe, edit_resource_path(resource), class: "btn btn-small btn-primary"%>
+          <%= link_to '<i class="material-icons align-middle">delete</i>Borrar'.html_safe, resource_path(resource), method: :delete,class: "btn btn-small btn-danger",data: {confirm: '¿Está seguro de eliminar el recurso ' +resource.name+ '?'}%>
         </div>
-        <%= link_to '<i class="material-icons align-middle">settings</i>Editar'.html_safe, edit_resource_path(resource), class: "btn btn-small btn-primary"%>
-        <%= link_to '<i class="material-icons align-middle">delete</i>Borrar'.html_safe, resource_path(resource), method: :delete,class: "btn btn-small btn-danger",data: {confirm: '¿Está seguro de eliminar el recurso ' +resource.name+ '?'}%>
-      </div>
-      <div class="card-footer text-center">
-        <small class="text-muted">Creado <%= resource.created_at %></small>
+        <div class="card-footer text-center">
+          <small class="text-muted">Creado <%= resource.created_at %></small>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <% @resources_filter.each do |resource| %>
+    <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+      <div class="card mb-3">
+        <div class="card-body text-center">
+          <%= link_to resource.name.capitalize, resource_path(resource), class: "h2 card-title" %>
+          <div class="row justify-content-center">
+            <div class="col-5 text-left my-3">
+              <span class="card-text text-center"><strong>Categoría:</strong></span><br/>
+              <span class="card-text text-center"><strong>Localización:</strong></span>
+              <span class="card-text text-center"><strong>Dotación:</strong></span>
+            </div>
+            <div class="col-4 text-left my-3">
+              <%= resource.category %><br/>
+              <%= resource.localization %><br/>
+              <%= resource.users.count %>
+            </div>
+          </div>
+          <%= link_to '<i class="material-icons align-middle">settings</i>Formulario'.html_safe, edit_resource_path(resource), class: "btn btn-small btn-primary"%>
+        </div>
+        <div class="card-footer text-center">
+          <small class="text-muted">Creado <%= resource.created_at %></small>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+
 </div>
 
 
