@@ -12,11 +12,11 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Personas desaparecidas</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= MissingPerson.all.count %></div>
           </div>
-          <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          <div class="col-3">
+            <i class="material-icons align-middle text-secondary" style="font-size: 40px !important;">accessibility</i>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Recursos sin formulario</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @resources_without_extra_fields %></div>
           </div>
           <div class="col-3">
             <i class="material-icons align-middle text-secondary" style="font-size: 40px !important;">format_align_justify</i>
@@ -88,7 +88,7 @@
       <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
         <div class="card mb-3 shadow">
           <div class="card-body text-center">
-            <%= link_to resource.name.capitalize, resource_path(resource), class: "h2 card-title" %>
+            <%= link_to resource.name.capitalize, resource_path(resource), class: "h2 card-title text-reset" %>
             <div class="row justify-content-center">
               <div class="col-5 text-left my-3">
                 <span class="card-text text-center"><strong>Categoría:</strong></span><br/>
@@ -101,6 +101,16 @@
                 <%= resource.users.count %>
               </div>
             </div>
+            <div class="row justify-content-center bg-gardient-red">
+              <div class="col-12">
+                <h4 class="text-white text-center pt-1">Formulario</h4>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <% resource.form_fields.each do |f|%>
+                <li class="list-group-item"><strong><%= f.label %>: </strong><%= f.value %></li>
+              <% end %>
+            </ul>
           </div>
           <div class="card-footer text-center">
             <small class="text-muted">Creado <%= resource.created_at %></small>
