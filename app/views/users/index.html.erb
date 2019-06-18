@@ -96,6 +96,10 @@ $(document).ready( function () {
         
         "pagingType": "full_numbers",
         "order": [[ 0, "desc" ]],
+        "columnDefs": [ {
+          "targets": [8,9,10],
+          "orderable": false
+        } ]
 
     });
 });
