@@ -106,6 +106,9 @@
                 <h4 class="text-white text-center pt-1">Formulario</h4>
               </div>
             </div>
+            <% if resource.form_fields.count == 0%>
+              <h4><span class="badge bg-secondary text-white mt-2">Sin Formulario</span></h4>
+            <% end %>
             <ul class="list-group list-group-flush">
               <% resource.form_fields.each do |f|%>
                 <li class="list-group-item"><strong><%= f.label %>: </strong><%= f.value %></li>
