@@ -16,7 +16,7 @@
   </div>
 </div>
 <% end %>
-<% if @resources_filter.count == 0 && !current_user.tipo == "Admin"%>
+<% if @resources_filter.count == 0 && current_user.tipo != "Admin"%>
 <div class="row">
   <div class="col-12">
     <h1 class="display-4 text-center">No tienes recursos asignados</h1>
