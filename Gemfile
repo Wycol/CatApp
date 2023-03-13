@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.3'
 #gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'jquery-rails'
 gem 'carrierwave'
 # Use SCSS for stylesheets
